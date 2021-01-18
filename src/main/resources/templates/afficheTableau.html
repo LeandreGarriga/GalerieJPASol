@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Liste des tableaux</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>	
+	</head>
+    <body>
+        <h1>Les tableaux et leurs auteurs</h1><!-- comment -->
+        <table border="1">
+            <caption></caption><!-- comment -->
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Support</th>
+                    <th>Dimension</th>
+                    <th>Supprimer</th>
+                    <th>Auteur</th>
+                    
+                </tr>
+            </thead>
+            <tbody   th:each="t: ${tableaux}">
+                <tr>
+                    <td><em th:text="${t.titre}">Le titre du tableau</em></td>
+                    <td><em th:text="${t.support}">Le support du tableau</em></td>
+                    <td><em th:text="${t.dimension}">La dimension du tableau</em></td>
+                    <td><a th:href="@{delete(id=${t.id})}">Supprimer le tableau n° [[${t.id}]]</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Ajouter un tableau</h2>
+        <a th:href="@{add}" href='formulaireTableau.html'>Ajouter un tableau</a>
+    </body>
+</html>
